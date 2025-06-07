@@ -3,18 +3,21 @@ import "./style.css";
 import "./assets/img/rigo-baby.jpg";
 import "./assets/img/4geeks.ico";
 
-window.onload = function() {
   //write your code here
-  let who = ['My Lights', 'My Dog', 'My Parents', 'My Girlfriend']; 
-  let action = ['ate', 'destroyed', 'burned', 'threw away'];
-  let homework = ['my homework', 'my work', 'my hopes', 'my dinasty']; 
-  let when = ['yesterday', 'last Night', 'last week', 'this morning']; 
-
-  let randomwho = Math.floor(Math.random() * who.length); 
-  let randomaction = Math.floor(Math.random() * action.length); 
-  let randomhomework = Math.floor(Math.random() * homework.length); 
-  let randomwhen = Math.floor(Math.random() * when.length); 
-
-  document.getElementById("excuse").innerText = who[randomwho] + " " + action[randomaction] + " " + homework[randomhomework] + " " + when[randomwhen];
+  function getRandomItem(array) {
+  const index = Math.floor(Math.random() * array.length);
+  return array[index];
 }
 
+function generateExcuse() {
+  const who = ['My lights', 'My dog', 'My parents', 'My girlfriend'];
+  const action = ['ate', 'destroyed', 'burned', 'threw away'];
+  const what = ['my homework', 'my work', 'my hopes', 'my dynasty'];
+  const when = ['yesterday', 'last night', 'last week', 'this morning'];
+
+  const excuse = `${getRandomItem(who)} ${getRandomItem(action)} ${getRandomItem(what)} ${getRandomItem(when)}.`;
+
+  document.getElementById("excuse").innerText = excuse;
+} 
+
+window.onload = generateExcuse;
